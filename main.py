@@ -5,9 +5,6 @@ from utils import json_
 
 HOST = '0.0.0.0'
 
-if not tasks_path.exists():
-    json_(tasks_path, [])
-
 tasks = json_(tasks_path)
 
 app = Flask(__file__)
@@ -18,4 +15,5 @@ def get_tasks():
     return 'Tasks api is running'
 
 
-app.run(HOST, debug=True)
+if __name__ == '__main__':
+    app.run(HOST, debug=True)
