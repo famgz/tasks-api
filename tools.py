@@ -22,10 +22,7 @@ def validate_task(task):
     return True
 
 
-def convert_to_plain_task(task: dict):
-    task_id = next(iter(task))
-    plain_task = {
-        'id': task_id,
-    }
-    plain_task.update(task[task_id])
+def convert_to_plain_task(task_id: str, task_info: dict):
+    plain_task = {'id': task_id}
+    plain_task.update(task_info)
     return plain_task

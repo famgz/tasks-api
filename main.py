@@ -37,7 +37,7 @@ def home():
 
 @app.get('/tasks')
 def get_tasks():
-    return [convert_to_plain_task({task_id: task_data}) for task_id, task_data in tasks.items()]
+    return [convert_to_plain_task(task_id, task_info) for task_id, task_info in tasks.items()]
 
 
 @app.get('/tasks/<string:task_id>')
@@ -45,7 +45,7 @@ def get_task(task_id):
     task = tasks.get(task_id)
     if not task:
         return jsonify({'message': f'Task not found: {task_id}'}), 422
-    return convert_to_plain_task(task)
+    return convert_to_plain_task(task_id, task[task_id])
 
 
 @app.post('/tasks')
