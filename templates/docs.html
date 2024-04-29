@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      .code {
+        background-color: antiquewhite;
+        border-radius: 4px;
+        padding: 4px;
+      }
+      div.code {
+        width: fit-content;
+      }
+    </style>
+  </head>
+  <body>
+    <div style="max-width: 500px; margin: 1rem auto">
+      <h1 style="text-align: center">Tasks api documentation</h1>
+      <h2>Usage:</h2>
+      <p><strong>GET</strong> all tasks: <span class="code">/tasks</span></p>
+      <p>
+        <strong>GET</strong> one task: <span class="code">/tasks/task_id</span>
+      </p>
+      <p>
+        <strong>POST</strong> new task: <span class="code">/tasks</span> with
+        JSON body
+      </p>
+
+      <br />
+      <p>Task default format:</p>
+      <div>
+        <pre>
+{
+    id: string, // UUID
+    title: string,
+    category: string,
+    completed: boolean,
+    dueHour: string // HH:MM
+}
+        </pre>
+      </div>
+    </div>
+  </body>
+</html>

@@ -5,6 +5,8 @@ source_dir = Path(__file__).parent.resolve()
 
 data_dir = Path(source_dir, 'data')
 
+templates_dir = Path(source_dir, 'templates')
+
 tasks_path = Path(data_dir, 'tasks.json')
 
 if not data_dir.exists():

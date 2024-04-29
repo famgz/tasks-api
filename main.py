@@ -1,6 +1,5 @@
-from flask import Flask, abort, request, jsonify
-from pathlib import Path
-from config import source_dir, data_dir, tasks_path
+from flask import Flask, abort, request, jsonify, render_template
+from config import tasks_path
 from utils import json_
 from tools import validate_task, convert_to_plain_task
 import uuid
@@ -14,17 +13,6 @@ app = Flask(__file__)
 app.json.sort_keys = False
 
 
-docs_msg = '''
-<div style="max-width: 500px; margin: 1rem auto">
-    <h1 style="text-align: center">Tasks api documentation</h1>
-    <h2>Usage:</h2>
-    <p><strong>GET</strong> all tasks: /tasks</p>
-    <p><strong>GET</strong> one task: /tasks/<task_id></p>
-    <p><strong>POST</strong> new task: /tasks with JSON body</p>
-</div>
-'''
-
-
 def save_tasks():
     json_(tasks_path, tasks, backup=True,
           ensure_ascii=False, sort_keys=False, indent=2)
@@ -32,7 +20,7 @@ def save_tasks():
 
 @app.get('/')
 def home():
-    return docs_msg
+    return render_template('docs.html')
 
 
 @app.get('/tasks')
