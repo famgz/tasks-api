@@ -11,4 +11,4 @@ if not data_dir.exists():
     data_dir.mkdir()
 
 if not tasks_path.exists():
-    json_(tasks_path, [])
+    json_(tasks_path, {})
