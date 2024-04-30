@@ -5,9 +5,8 @@ from tools import validate_task, convert_to_plain_task, parse_task
 import uuid
 
 HOST = '0.0.0.0'
-DEBUG = True
+DEBUG = False
 WRITE_TO_JSON = False
-
 
 _tasks = json_(tasks_path)
 
