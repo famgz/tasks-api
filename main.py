@@ -1,7 +1,8 @@
 from flask import Flask, abort, request, jsonify, render_template
+from flask_cors import CORS
 from config import tasks_path
 from utils import json_
-from tools import validate_task, convert_to_plain_task, parse_task
+from tools import get_all_plain_tasks, validate_task, convert_to_plain_task, parse_task
 import uuid
 
 HOST = '0.0.0.0'
@@ -12,6 +13,7 @@ _tasks = json_(tasks_path)
 
 app = Flask(__file__)
 app.json.sort_keys = False
+CORS(app)
 
 
 def save_tasks():
@@ -28,7 +30,7 @@ def home():
 
 @app.get('/tasks')
 def get_tasks():
-    return [convert_to_plain_task(task_id, task_info) for task_id, task_info in _tasks.items()]
+    return jsonify(get_all_plain_tasks(_tasks)), 200
 
 
 @app.get('/tasks/<string:task_id>')
