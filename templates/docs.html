@@ -9,6 +9,12 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet" />
     <style>
+      :root {
+        --get: #61affe;
+        --post: #49cc90;
+        --put: #fca130;
+        --delete: #f93e3e;
+      }
       body {
         background-color: #f9f9f9;
         color: #222;
@@ -33,28 +39,75 @@
       div.code {
         width: fit-content;
       }
+      .method-wrapper {
+        border: 1px solid #aaa;
+        padding: 12px;
+        border-radius: 4px;
+
+        & strong {
+          display: inline-block;
+          color: white;
+          padding: 4px 12px;
+          border-radius: 4px;
+          margin-right: 8px;
+          min-width: 60px;
+          text-align: center;
+        }
+      }
+
+      .get {
+        border: 1px solid var(--get);
+
+        & strong {
+          background-color: var(--get);
+        }
+      }
+      .post {
+        border: 1px solid var(--post);
+
+        & strong {
+          background-color: var(--post);
+        }
+      }
+      .put {
+        border: 1px solid var(--put);
+
+        & strong {
+          background-color: var(--put);
+        }
+      }
+      .delete {
+        border: 1px solid var(--delete);
+
+        & strong {
+          background-color: var(--delete);
+        }
+      }
     </style>
   </head>
   <body>
     <div class="container">
       <h1 style="text-align: center">Tasks api documentation</h1>
       <h2>Usage:</h2>
-      <p><strong>GET</strong> all tasks: <span class="code">/tasks</span></p>
-      <p>
-        <strong>GET</strong> one task: <span class="code">/tasks/task_id</span>
+      <p class="method-wrapper get">
+        <strong>GET</strong> all tasks: <span class="code">/tasks</span>
       </p>
-      <p>
+      <p class="method-wrapper get">
+        <strong>GET</strong> one task:
+        <span class="code">/tasks/{task_id}</span>
+      </p>
+      <p class="method-wrapper post">
         <strong>POST</strong> new task: <span class="code">/tasks</span>
         (JSON body with all fields)
       </p>
-      <p>
+      <p class="method-wrapper put">
         <strong>PUT</strong> update one task:
-        <span class="code">/tasks/task_id</span>
-        (JSON body with at least one field)
+        <span class="code">/tasks/{task_id}</span>
+        (JSON body, at least one field)
       </p>
-      <p>
+      <p class="method-wrapper delete">
         <strong>DELETE</strong> delete one task:
-        <span class="code">/tasks/task_id</span>
+        <span class="code">/tasks/{task_id}</span>
       </p>
 
       <br />
