@@ -14,7 +14,7 @@ app.json.sort_keys = False
 
 
 def save_tasks():
-    json_(tasks_path, tasks, backup=True,
+    json_(tasks_path, tasks,
           ensure_ascii=False, sort_keys=False, indent=2)
 
 
