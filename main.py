@@ -13,7 +13,8 @@ _tasks = json_(tasks_path)
 
 app = Flask(__file__)
 app.json.sort_keys = False
-CORS(app, methods=["GET", "POST", "PUT", "DELETE"])
+CORS(app, origins=['https://famgz-todo-list-angular.vercel.app/'],
+     methods=["GET", "POST", "PUT", "DELETE"])
 
 
 def save_tasks():
