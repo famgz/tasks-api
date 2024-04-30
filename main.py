@@ -5,7 +5,9 @@ from tools import validate_task, convert_to_plain_task
 import uuid
 
 HOST = '0.0.0.0'
-DEBUG = True
+DEBUG = False
+WRITE_TO_JSON = False
+
 
 tasks = json_(tasks_path)
 
@@ -14,6 +16,8 @@ app.json.sort_keys = False
 
 
 def save_tasks():
+    if not WRITE_TO_JSON:
+        return
     json_(tasks_path, tasks,
           ensure_ascii=False, sort_keys=False, indent=2)
 
