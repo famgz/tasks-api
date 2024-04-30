@@ -71,3 +71,8 @@ def convert_to_plain_task(task_id: str, task_info: dict):
     plain_task = {'_id': task_id}
     plain_task.update(task_info)
     return plain_task
+
+
+def get_all_plain_tasks(_tasks):
+    return [convert_to_plain_task(task_id, task_info)
+            for task_id, task_info in _tasks.items()]
